@@ -1,0 +1,7 @@
+tronco.png,100,0.7
+guigui.png,250,0.15
+souche.png,100,0.15
+cha.png,100,0.75
+raph.png,50,0.75
+king.png,40,0.58
+ying.png,150,0.5
