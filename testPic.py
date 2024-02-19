@@ -1,10 +1,13 @@
 from PIL import Image, ImageOps
 import random
+import time
+
+start = time.time()
 
 # Load the original image
-original_image1 = Image.open('simon.png')
+original_image1 = Image.open('tronco.png')
 original_image2 = Image.open('guigui.png')
-original_image3 = Image.open('massaux.png')
+original_image3 = Image.open('souche.png')
 
 # Screen dimensions (for example, 1920x1080)
 screen_width = 3840
@@ -14,7 +17,7 @@ screen_height = 2160
 canvas = Image.new('RGB', (screen_width, screen_height), (255, 255, 255))
 
 # Maximum allowed overlap percentage
-max_overlap = 0.75
+max_overlap = 0.15
 
 # List to store image positions and sizes for overlap checking
 # placed_images = []
@@ -38,12 +41,11 @@ max_overlap = 0.75
 # Decide how many times you want to paste the original image
 number_of_instances = 350
 
-
 for _ in range(number_of_instances):
     # Randomly scale the original image (50% to 150% of the original size)
     original_image = random.choice([original_image1, original_image2, original_image3])
 
-    scale_factor = random.uniform(0.01, 0.65)
+    scale_factor = random.uniform(0.01, 0.3)
     new_size = (int(original_image.width * scale_factor), int(original_image.height * scale_factor))
     resized_image = original_image.resize(new_size)
 
@@ -63,7 +65,12 @@ for _ in range(number_of_instances):
     # Paste the randomly manipulated image onto the canvas
     canvas.paste(rotated_image, (position_x, position_y), rotated_image)
 
+
 # Save or show the final image
-canvas.save('filled_screen.png')
+canvas.save('my_demise.png')
 # or display it in a Jupyter notebook
 # display(canvas)
+
+end = time.time()
+time_tot = end - start
+print("total time ", time_tot)
